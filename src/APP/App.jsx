@@ -19,10 +19,28 @@ function App() {
           <Route index element={<Home />} />
 
           <Route
-            path="second"
+            path="login"
             element={
               <Suspense fallback={<h1>Loading...</h1>}>
                 <SecondPage />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="balance"
+            element={
+              <Suspense fallback={<h1>Loading...</h1>}>
+                <h1>Balance Page</h1>
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="reports"
+            element={
+              <Suspense fallback={<h1>Loading...</h1>}>
+                <h1>Reports Page</h1>
               </Suspense>
             }
           />

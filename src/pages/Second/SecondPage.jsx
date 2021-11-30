@@ -1,3 +1,3 @@
-const SecondPage = () => <h1>Second Page</h1>;
+const SecondPage = () => <h1>Login Page</h1>;
 
 export default SecondPage;

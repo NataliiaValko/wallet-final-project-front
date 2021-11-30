@@ -13,11 +13,19 @@ export const NavBar = () => {
 
           <ul className={style.list}>
             <li className={style.links}>
-              <CustomLink to="/">Home</CustomLink>
+              <CustomLink to="/">Registration</CustomLink>
             </li>
 
             <li className={style.links}>
-              <CustomLink to="/second">Second</CustomLink>
+              <CustomLink to="/login">Login</CustomLink>
+            </li>
+
+            <li className={style.links}>
+              <CustomLink to="/balance">Balance</CustomLink>
+            </li>
+
+            <li className={style.links}>
+              <CustomLink to="/reports">Reports</CustomLink>
             </li>
           </ul>
         </nav>

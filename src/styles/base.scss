@@ -1,37 +1,34 @@
-@import './shared.scss';
+// @import './shared.scss';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
 
-body {
-  margin: 0;
-  font-family: $secendary-font-stack;
-  line-height: 1.5;
+// body {
+//   margin: 0;
+//   font-family: $secendary-font-stack;
+//   line-height: 1.5;
 
-  color: $primary-color;
-  background-color: $white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+//   color: $primary-color;
+//   background-color: $white;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+// img {
+//   display: block;
+//   max-width: 100%;
+//   height: auto;
+// }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-p {
-  margin-top: 0;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// p {
+//   margin: 0;
+// }
