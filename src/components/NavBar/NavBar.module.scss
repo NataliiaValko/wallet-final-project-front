@@ -1,0 +1,72 @@
+@import 'styles/shared.scss';
+
+.header {
+  min-width: 100%;
+  background-color: $white;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: $boxShadow;
+}
+
+.headerTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: $accent-color;
+  max-width: 100px;
+  margin-right: auto;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 28px;
+  }
+}
+
+.navigation {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+    padding: 0 40px;
+  }
+}
+
+.list {
+  @extend %list;
+  padding-left: 0;
+
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.links {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+
+    @media screen and (min-width: $tablet) {
+      margin: 0 30px 0 0;
+    }
+  }
+}
+
+.logo {
+  background: url('../../images/android-icon-96x96.png');
+  width: 95px;
+  height: 95px;
+  margin: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media screen and (min-width: $tablet) {
+    margin: 5px 10px 5px 5px;
+  }
+}
