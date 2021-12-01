@@ -57,5 +57,9 @@
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
     "*.{js,jsx,css,md,scss}": "prettier --write"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/NataliiaValko/wallet-final-project-front.git",
+  "author": "Mike-Max <scartman1992@gmail.com>",
+  "license": "MIT"
 }
