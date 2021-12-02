@@ -5,7 +5,7 @@ import Period from './Period';
 
 const StatHeader = () => {
   return (
-    <div>
+    <div className={s.statHeader}>
       <BackButton />
       <Balance />
       <Period />
