@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { NavBar } from 'components/NavBar/NavBar';
 import Home from 'pages/Home/Home';
+import StatisticWrapper from './../components/Statistic/StatisticWrapper';
 
 const SecondPage = lazy(() =>
   import('pages/Second/SecondPage' /* webpackChunkName: "SecondPage" */),
@@ -40,7 +41,8 @@ function App() {
             path="reports"
             element={
               <Suspense fallback={<h1>Loading...</h1>}>
-                <h1>Reports Page</h1>
+                {/* <h1>Reports Page</h1> */}
+                <StatisticWrapper />
               </Suspense>
             }
           />
