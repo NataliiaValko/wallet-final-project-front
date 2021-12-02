@@ -7,8 +7,8 @@ import s from './StatisticWrapper.module.css';
 const StatisticWrapper = () => {
   return (
     <>
-      <StatHeader></StatHeader>
-      <IncomeCosts></IncomeCosts>
+      <StatHeader />
+      <IncomeCosts />
       <Categories />
       <GraphDetails />
     </>
