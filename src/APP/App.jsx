@@ -1,7 +1,9 @@
 import { lazy, Suspense } from 'react';
+
 import { Routes, Route } from 'react-router-dom';
 import { NavBar } from 'components/NavBar/NavBar';
 import Home from 'pages/Home/Home';
+import Registration from 'pages/Registration';
 
 const SecondPage = lazy(() =>
   import('pages/Second/SecondPage' /* webpackChunkName: "SecondPage" */),
@@ -18,6 +20,7 @@ function App() {
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
 
+          <Route path="register" element={<Registration />} />
           <Route
             path="login"
             element={

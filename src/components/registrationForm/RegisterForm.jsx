@@ -16,6 +16,7 @@ const RegisterForm = () => {
         email: '',
         password: '',
         confirmPassword: '',
+        acceptedTerms: '',
       }}
       validationSchema={userSchema}
       validateOnMount
@@ -51,14 +52,18 @@ const RegisterForm = () => {
           <ErrorMessage name="confirmPassword" />
 
           <label>
-            I accepted terms conditions
+            <a href="#">I accepted terms conditions</a>
             <Field name="acceptedTerms" type="checkbox" />
           </label>
           <ErrorMessage name="acceptedTerms" />
 
           <button disabled={!isValid} type="submit">
-            Welcome
+            register
           </button>
+
+          <button type="submit">Login</button>
+
+          <button type="submit">Login with Google</button>
 
           {/* WITH CUSTOM HOOKS  */}
 
