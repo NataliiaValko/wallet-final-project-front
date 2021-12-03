@@ -1,6 +1,6 @@
 import { useField } from 'formik';
 
-export default function MyCheckBox({ children, ...props }) {
+const MyCheckBox = ({ children, ...props }) => {
   const [field, meta] = useField({ ...props, type: 'checkbox' });
 
   return (
@@ -12,4 +12,6 @@ export default function MyCheckBox({ children, ...props }) {
       {meta.touched && meta.error ? <div className="error">{meta.error}</div> : null}
     </div>
   );
-}
+};
+
+export default MyCheckBox;

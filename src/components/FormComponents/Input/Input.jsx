@@ -1,6 +1,6 @@
 import { useField } from 'formik';
 
-export default function MyInput({ label, ...props }) {
+const MyInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>
@@ -9,4 +9,6 @@ export default function MyInput({ label, ...props }) {
       {meta.touched && meta.error ? <div className="error">{meta.error}</div> : null}
     </>
   );
-}
+};
+
+export default MyInput;
