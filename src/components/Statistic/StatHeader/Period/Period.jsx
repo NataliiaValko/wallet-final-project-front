@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack';
 
 const Period = () => {
   const [value, setValue] = React.useState(new Date());
+
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
