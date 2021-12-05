@@ -2,96 +2,160 @@ import s from './GraphDetails.module.css';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import drilldown from 'highcharts/modules/drilldown';
+import Categories from './Categories';
+import { useState } from 'react';
 
 drilldown(Highcharts);
 
-const getData = (value, name) => {
-  return [
-    [`First ${name}`, value],
-    [`Second ${name}`, value * 2],
-  ];
-};
-const options = {
+//РАСХОДЫ - ТЕСТ
+const optionsCosts = {
   chart: {
     type: 'column',
-    events: {
-      drilldown: function (e) {
-        if (!e.seriesOptions) {
-          var chart = this;
-          if (e.point.name === 'NAMR') {
-            chart.addSingleSeriesAsDrilldown(e.point, {
-              name: 'New',
-              color: 'green',
-              data: getData(5, 'Johny'),
-            });
-            chart.addSingleSeriesAsDrilldown(e.point, {
-              name: 'In Progress',
-              color: 'blue',
-              data: getData(2, 'Marry'),
-            });
-          }
-          chart.applyDrilldown();
-        }
-      },
-    },
-  },
-  title: {
-    text: 'Testing Chart',
-    style: {
-      fontSize: '15px',
-      fontWeight: 'bold',
-      color: '#123E69',
-    },
-  },
-  subtitle: {
-    text: 'Click the columns to drilldown to each region',
   },
 
+  title: {
+    text: 'Расходы',
+  },
   xAxis: {
     type: 'category',
   },
-  yAxis: {
-    min: 0, // Lowest value to show on the yAxis
-    title: {
-      text: 'Counts', // Title for the yAxis
-    },
-  },
   legend: {
-    enabled: true, // Enable/Disable the legend
+    enabled: false,
   },
 
-  tooltip: {
-    shared: true, // If you have multiple series then all points in each category will show up on one tooltip
-  },
   series: [
     {
-      name: 'New',
+      name: 'Категории',
+      colorByPoint: true,
       data: [
         {
-          name: 'NAMR',
-          y: 34,
-          drilldown: true,
+          name: 'ЗДОРОВЬЕ',
+          y: 5,
+          drilldown: 'health',
         },
-      ],
-    },
-    {
-      name: 'In Progress',
-      data: [
         {
-          name: 'NAMR',
-          y: 66,
-          drilldown: true,
+          name: 'ПРОДУКТЫ',
+          y: 2,
+          drilldown: 'meals',
+        },
+        {
+          name: 'РАЗВЛЕЧЕНИЯ',
+          y: 4,
+          drilldown: 'entertainment',
         },
       ],
     },
   ],
+  drilldown: {
+    series: [
+      {
+        id: 'health',
+        data: [
+          ['Витамины', 400],
+          ['Лекарства', 200],
+          ['Массаж', 1000],
+          ['Врачи', 2000],
+        ],
+      },
+      {
+        id: 'meals',
+        data: [
+          ['Apples', 40],
+          ['Oranges', 20],
+          ['Meat', 200],
+          ['Fish', 150],
+          ['Vegeatables', 2000],
+        ],
+      },
+      {
+        id: 'entertainment',
+        data: [
+          ['Баня', 4],
+          ['Девки', 2],
+          ['Компот', 2],
+        ],
+      },
+    ],
+  },
+};
+
+//ДОХОДЫ ТЕСТ
+const optionsIncome = {
+  chart: {
+    type: 'column',
+  },
+
+  title: {
+    text: 'Доходы',
+  },
+  xAxis: {
+    type: 'category',
+  },
+  legend: {
+    enabled: false,
+  },
+
+  series: [
+    {
+      name: 'Категории',
+      colorByPoint: true,
+      data: [
+        {
+          name: 'ЗП',
+          y: 5,
+          drilldown: 'salary',
+        },
+        {
+          name: 'ДЕПОЗИТЫ',
+          y: 2,
+          drilldown: 'deposits',
+        },
+        {
+          name: 'ПРОЧИЕ ДОХОДЫ',
+          y: 4,
+          drilldown: 'other',
+        },
+      ],
+    },
+  ],
+  drilldown: {
+    series: [
+      {
+        id: 'salary',
+        data: [
+          ['МУЖ', 500000],
+          ['ЖЕНА', 20000],
+          ['ДЕТИ', 1000],
+        ],
+      },
+      {
+        id: 'deposits',
+        data: [
+          ['PrivatBank', 400000],
+          ['AlfaBank', 200000],
+          ['OTPBank', 20000000],
+        ],
+      },
+      {
+        id: 'other',
+        data: [
+          ['Украдено', 10000],
+          ['Найдено', 200000],
+          ['Подарки', 2000],
+        ],
+      },
+    ],
+  },
 };
 
 const GraphDetails = () => {
+  const [radioButton, setRadioButton] = useState(false);
+
   return (
     <div className={s.graphDetails}>
-      <h2>ГРАФИКИ</h2>
-      <HighchartsReact highcharts={Highcharts} options={options} />
+      <Categories updateData={setRadioButton} />
+      {radioButton === false && <HighchartsReact highcharts={Highcharts} options={optionsCosts} />}
+      {radioButton === true && <HighchartsReact highcharts={Highcharts} options={optionsIncome} />}
     </div>
   );
 };
