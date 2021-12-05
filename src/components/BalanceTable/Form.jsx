@@ -48,7 +48,7 @@ const Form = ({ placeholder, categoryArray }) => {
       sum,
     };
     console.log(dateResponse);
-    console.log('Sbmit Form');
+    console.log('Submit Form');
   };
 
   const onResetClick = () => {
