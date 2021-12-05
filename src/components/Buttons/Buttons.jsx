@@ -1,4 +1,4 @@
-import * as React from 'react';
+import PropTypes from 'prop-types';
 import Stack from '@mui/material/Stack';
 import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
 import { styled } from '@mui/system';
@@ -58,5 +58,17 @@ export const Button = ({ name, type, onclick }) => (
     {name}
   </CustomButton>
 );
+
+Buttons.propTypes = {
+  name: PropTypes.array.isRequired,
+  type: PropTypes.array.isRequired,
+  onclick: PropTypes.func,
+};
+
+Button.propTypes = {
+  name: PropTypes.array.isRequired,
+  type: PropTypes.array.isRequired,
+  onclick: PropTypes.func,
+};
 
 export default Buttons;
