@@ -1,0 +1,59 @@
+.thumb {
+  margin-bottom: auto;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgb(250, 248, 248);
+  margin-left: 80px;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// BalanceLine
+.balanceThumb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.reportsLink {
+  text-decoration: none;
+  color: inherit;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: '';
+    background: url('../../images/trend.png');
+    width: 24px;
+    height: 24px;
+    margin-left: 30px;
+  }
+}
+
+// Form
+.balanceForm {
+  display: flex;
+  align-items: flex-start;
+
+  margin-bottom: 50px;
+}
+
+.buttons {
+  margin-left: auto;
+}

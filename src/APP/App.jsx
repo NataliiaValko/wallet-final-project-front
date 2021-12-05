@@ -7,6 +7,10 @@ const SecondPage = lazy(() =>
   import('pages/Second/SecondPage' /* webpackChunkName: "SecondPage" */),
 );
 
+const BalancePage = lazy(() =>
+  import('pages/BalancePage/BalancePage' /* webpackChunkName: "BalancePage" */),
+);
+
 const NotFound = lazy(() =>
   import('pages/NotFound/NotFound' /* webpackChunkName: "Not-Found-page" */),
 );
@@ -31,7 +35,7 @@ function App() {
             path="balance"
             element={
               <Suspense fallback={<h1>Loading...</h1>}>
-                <h1>Balance Page</h1>
+                <BalancePage />
               </Suspense>
             }
           />
