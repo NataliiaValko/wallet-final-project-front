@@ -1,9 +1,20 @@
 import { useState } from 'react';
 import { Button } from 'components/Buttons/Buttons';
+import SelectionModal from 'components/Modal/SelectionModal';
 import TextField from '@mui/material/TextField';
 
 const AddCategory = ({ categoryArray }) => {
   const [category, setCategory] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    if (category.trim() === '') {
+      alert('Empty category');
+      return;
+    }
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   const handleChangeCategory = event => {
     setCategory(event.target.value);
@@ -12,12 +23,9 @@ const AddCategory = ({ categoryArray }) => {
   const changeCategory = event => {
     event.preventDefault();
 
-    if (category.trim() === '') {
-      alert('Empty category');
-      return;
-    }
     categoryArray.push(category);
     setCategory('');
+    setOpen(false);
     console.log(category);
     console.log(categoryArray);
   };
@@ -25,7 +33,7 @@ const AddCategory = ({ categoryArray }) => {
   const clearField = () => setCategory('');
 
   return (
-    <form onSubmit={changeCategory}>
+    <>
       <TextField
         helperText="Добавьте категорию"
         id="category"
@@ -36,9 +44,11 @@ const AddCategory = ({ categoryArray }) => {
         name="category"
         required
       />
-      <Button name="Добавить" type="submit" />
+      <Button name="Добавить" type="button" onClick={handleOpen} />
       <Button name="Очистить" type="button" onClick={clearField} />
-    </form>
+
+      {open && <SelectionModal open={open} handleClose={handleClose} onClick={changeCategory} />}
+    </>
   );
 };
 
