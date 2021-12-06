@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { NavBar } from 'components/NavBar/NavBar';
 import Registration from 'pages/Registration';
+import StatisticWrapper from 'components/Statistic/StatisticWrapper';
 
 const BalancePage = lazy(() => import('pages' /* webpackChunkName: "BalancePage" */));
 
@@ -31,6 +32,14 @@ function App() {
             element={
               <Suspense fallback={<h1>Loading...</h1>}>
                 <NotFound />
+              </Suspense>
+            }
+          />
+          <Route
+            path="reports"
+            element={
+              <Suspense fallback={<h1>Loading...</h1>}>
+                <StatisticWrapper />
               </Suspense>
             }
           />
