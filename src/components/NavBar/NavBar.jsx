@@ -1,25 +1,20 @@
-import { Link, Outlet } from 'react-router-dom';
-import { CustomLink } from 'components/CustomLink/CustomLink';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
+import UserMenu from 'components/userMenu/userMenu';
 import style from '../NavBar/NavBar.module.scss';
 
 export const NavBar = () => {
+  let location = useLocation();
+
   return (
     <>
       <header className={style.header}>
-        <nav className={style.navigation}>
-          <Link className={style.logo} to="/"></Link>
+        <Link className={style.headerTitle} to="/balance">
+          Kapusta
+        </Link>
 
-          <p className={style.headerTitle}>Kapusta</p>
-
-          <ul className={style.list}>
-            <li className={style.links}>
-              <CustomLink to="/balance">Balance</CustomLink>
-            </li>
-          </ul>
-        </nav>
+        {location.pathname === '/balance' && <UserMenu />}
       </header>
-
-      <Outlet />
     </>
   );
 };

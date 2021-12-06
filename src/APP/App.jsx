@@ -13,28 +13,27 @@ const NotFound = lazy(() =>
 function App() {
   return (
     <main>
+      <NavBar />
       <Routes>
-        <Route path="/" element={<NavBar />}>
-          <Route path="register" element={<Registration />} />
+        <Route path="/" element={<Registration />} />
 
-          <Route
-            path="balance"
-            element={
-              <Suspense fallback={<h1>Loading...</h1>}>
-                <BalancePage />
-              </Suspense>
-            }
-          />
+        <Route
+          path="balance"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <BalancePage />
+            </Suspense>
+          }
+        />
 
-          <Route
-            path="*"
-            element={
-              <Suspense fallback={<h1>Loading...</h1>}>
-                <NotFound />
-              </Suspense>
-            }
-          />
-        </Route>
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <NotFound />
+            </Suspense>
+          }
+        />
       </Routes>
     </main>
   );

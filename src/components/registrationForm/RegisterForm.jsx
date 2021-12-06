@@ -52,7 +52,7 @@ const RegisterForm = () => {
           <ErrorMessage name="confirmPassword" />
 
           <label>
-            <a href="#">I accepted terms conditions</a>
+            {/* <a href="#">I accepted terms conditions</a> */}
             <Field name="acceptedTerms" type="checkbox" />
           </label>
           <ErrorMessage name="acceptedTerms" />
