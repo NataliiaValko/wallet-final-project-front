@@ -42,7 +42,7 @@ function CustomButton(props) {
   return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
 }
 
-const Buttons = ({ name, type, onclick }) => {
+const BalanceFormButtons = ({ name, type, onclick }) => {
   return (
     <Stack spacing={2} direction="row">
       <CustomButton type={type[0]}>{name[0]}</CustomButton>
@@ -59,7 +59,7 @@ export const Button = ({ name, type, onclick }) => (
   </CustomButton>
 );
 
-Buttons.propTypes = {
+BalanceFormButtons.propTypes = {
   name: PropTypes.array.isRequired,
   type: PropTypes.array.isRequired,
   onclick: PropTypes.func,
@@ -71,4 +71,4 @@ Button.propTypes = {
   onclick: PropTypes.func,
 };
 
-export default Buttons;
+export default BalanceFormButtons;

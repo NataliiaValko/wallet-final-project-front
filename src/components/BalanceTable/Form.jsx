@@ -10,7 +10,7 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
-import Buttons from 'components/Buttons/Buttons';
+import BalanceFormButtons from 'components/Buttons/Buttons';
 import style from './BalanceTable.module.scss';
 
 const Form = ({ placeholder, categoryArray }) => {
@@ -115,7 +115,11 @@ const Form = ({ placeholder, categoryArray }) => {
         required
       />
       <div className={style.buttons}>
-        <Buttons name={['ВВОД', 'ОЧИСТИТЬ']} type={['submit', 'button']} onclick={onResetClick} />
+        <BalanceFormButtons
+          name={['ВВОД', 'ОЧИСТИТЬ']}
+          type={['submit', 'button']}
+          onclick={onResetClick}
+        />
       </div>
     </form>
   );
