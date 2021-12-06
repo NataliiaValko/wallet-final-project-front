@@ -35,6 +35,7 @@ const AddCategory = ({ categoryArray }) => {
   return (
     <>
       <TextField
+        autoComplete="off"
         helperText="Добавьте категорию"
         id="category"
         label="Добавить категорию"
