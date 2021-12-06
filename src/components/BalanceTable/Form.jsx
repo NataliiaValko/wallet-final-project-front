@@ -60,6 +60,7 @@ const Form = ({ placeholder, categoryArray }) => {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Stack spacing={3}>
           <DatePicker
+            inputFormat="dd/MM/yyyy"
             disableFuture
             label="Дата"
             openTo="year"
