@@ -7,7 +7,7 @@ const UserAvatar = ({ width, height }) => {
   return (
     <>
       <Avatar alt={fullName} src={avatar} sx={{ width, height }} />
-      <span>{fullName}</span>
+      <p>{fullName}</p>
     </>
   );
 };

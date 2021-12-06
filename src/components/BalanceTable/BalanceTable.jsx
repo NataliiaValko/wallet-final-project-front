@@ -102,7 +102,7 @@ const BalanceTable = ({ data, reportData }) => {
 
   return (
     <div className={style.tables__thumb}>
-      <div className={style.balanceTable__thumb}>
+      <div className={style.balancetable__thumb}>
         <DataGrid
           onCellEditCommit={show}
           rows={rows}
