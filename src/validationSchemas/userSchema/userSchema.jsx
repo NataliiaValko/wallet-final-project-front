@@ -3,12 +3,10 @@ import * as Yup from 'yup';
 const userSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, 'Must be 2 characters or more')
-    .max(15, 'Must be 15 characters or less')
-    .required('This field is required'),
+    .max(15, 'Must be 15 characters or less'),
   lastName: Yup.string()
     .min(2, 'Must be 2 characters or more')
-    .max(15, 'Must be 15 characters or less')
-    .required('This field is required'),
+    .max(15, 'Must be 15 characters or less'),
   email: Yup.string()
     .email('Email is invalid,please try again')
     .required('Email is required,please type your email'),
