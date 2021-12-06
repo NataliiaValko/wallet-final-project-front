@@ -64,7 +64,6 @@ const Form = ({ placeholder, categoryArray }) => {
             disableFuture
             label="Дата"
             openTo="year"
-            views={['year', 'month', 'day']}
             value={date}
             onChange={newValue => {
               setDate(newValue);
