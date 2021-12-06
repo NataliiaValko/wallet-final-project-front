@@ -1,12 +1,13 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-
 import BalanceTable from 'components/BalanceTable/BalanceTable';
 import Form from 'components/BalanceTable/Form';
+import AddCategory from 'components/BalanceTable/AddCategory';
+import style from './BalanceTable.module.scss';
 
 const IncomData = [
   {
@@ -39,6 +40,34 @@ const expensesData = [
     description: 'мясо',
     category: 'Продукты',
     sum: -200,
+  },
+  {
+    id: 203,
+    date: '22.01.2021',
+    description: 'курица',
+    category: 'Продукты',
+    sum: -200,
+  },
+  {
+    id: 204,
+    date: '22.01.2021',
+    description: 'олия',
+    category: 'Продукты',
+    sum: -64,
+  },
+  {
+    id: 205,
+    date: '22.01.2021',
+    description: 'овощи',
+    category: 'Продукты',
+    sum: -200,
+  },
+  {
+    id: 206,
+    date: '22.01.2021',
+    description: 'вода',
+    category: 'Продукты',
+    sum: -100,
   },
 ];
 
@@ -73,7 +102,7 @@ const incomeCatagoryArray = ['Зарплата', 'Инвистиции', 'Кре
 const ExpensesCatagoryArray = ['Продукты', 'Авто', 'Развлечения'];
 
 const HeaderTabs = () => {
-  const [value, setValue] = React.useState('1');
+  const [value, setValue] = useState('1');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -82,25 +111,29 @@ const HeaderTabs = () => {
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Расход" value="1" />
-            <Tab label="Доход" value="2" />
+            <Tab className={style.tabs} label="Расход" value="1" />
+            <Tab className={style.tabs} label="Доход" value="2" />
           </TabList>
         </Box>
+
         <TabPanel value="1">
           <Form
             placeholder={['Описание товара', 'Категория товара']}
             categoryArray={ExpensesCatagoryArray}
           />
           <BalanceTable data={expensesData} reportData={ExpensesReportData} />
+          <AddCategory categoryArray={ExpensesCatagoryArray} />
         </TabPanel>
+
         <TabPanel value="2">
           <Form
             placeholder={['Описание дохода', 'Категория дохода']}
             categoryArray={incomeCatagoryArray}
           />
           <BalanceTable data={IncomData} reportData={IncomReportData} />
+          <AddCategory categoryArray={incomeCatagoryArray} />
         </TabPanel>
       </TabContext>
     </Box>
