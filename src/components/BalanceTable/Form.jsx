@@ -56,7 +56,7 @@ const Form = ({ placeholder, categoryArray }) => {
     console.log('Reset');
   };
   return (
-    <form className={style.balanceForm} autoComplete="off" onSubmit={onSubmit}>
+    <form className={style.balance__form} autoComplete="off" onSubmit={onSubmit}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Stack spacing={3}>
           <DatePicker
@@ -74,7 +74,7 @@ const Form = ({ placeholder, categoryArray }) => {
       </LocalizationProvider>
 
       <TextField
-        helperText="Введите описание товара"
+        helperText="Введите описание"
         id="income"
         label={placeholder[0]}
         onChange={handleChangeDescription}
@@ -84,7 +84,7 @@ const Form = ({ placeholder, categoryArray }) => {
         required
       />
 
-      <Box sx={{ minWidth: 250 }}>
+      <Box className={style.category__field}>
         <FormControl fullWidth>
           <InputLabel id="category">{placeholder[1]}</InputLabel>
           <Select
@@ -114,11 +114,11 @@ const Form = ({ placeholder, categoryArray }) => {
         name="income"
         required
       />
-      <div className={style.buttons}>
+      <div className={style.balance__buttons}>
         <BalanceFormButtons
           name={['ВВОД', 'ОЧИСТИТЬ']}
           type={['submit', 'button']}
-          onclick={onResetClick}
+          onClick={onResetClick}
         />
       </div>
     </form>

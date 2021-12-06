@@ -1,4 +1,5 @@
-.thumb {
+//ReportTable
+.report__thumb {
   margin-bottom: auto;
   border-radius: 10px;
   padding: 20px;
@@ -6,30 +7,35 @@
   margin-left: 80px;
 }
 
-.title {
+.report__title {
   margin-top: 0;
 }
 
-.list {
+.report__list {
   padding-left: 0;
   list-style: none;
 }
 
-.item {
+.report__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+//Tabs
+.tabs {
+  color: inherit;
+}
+
 // BalanceLine
-.balanceThumb {
+.balanceLine__Thumb {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 50px;
 }
 
-.reportsLink {
+.reports__link {
   text-decoration: none;
   color: inherit;
 
@@ -47,13 +53,29 @@
 }
 
 // Form
-.balanceForm {
+.balance__form {
   display: flex;
   align-items: flex-start;
 
   margin-bottom: 50px;
 }
 
-.buttons {
+.category__field {
+  min-width: 250px;
+}
+
+.balance__buttons {
   margin-left: auto;
+}
+
+// BalanceTable
+.tables__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.balanceTable__thumb {
+  height: 400px;
+  width: 65%;
 }

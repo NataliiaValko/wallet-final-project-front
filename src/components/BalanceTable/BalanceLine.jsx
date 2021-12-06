@@ -5,11 +5,11 @@ const BalanceLine = () => {
   const totalUserBalance = { user: 'hc99yhf', totalBalance: 100000 };
   const { totalBalance } = totalUserBalance;
   return (
-    <div className={style.balanceThumb}>
+    <div className={style.balanceLine__Thumb}>
       <p>
         Текущий баланс пользователя: <b>{totalBalance} грн</b>
       </p>
-      <Link className={style.reportsLink} to="/reports">
+      <Link className={style.reports__link} to="/reports">
         перейти к отчётам
       </Link>
     </div>

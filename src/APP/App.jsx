@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
-
 import { Routes, Route } from 'react-router-dom';
-import { NavBar } from 'components/NavBar/NavBar';
+import AppBar from 'components/AppBar/AppBar';
 import Registration from 'pages/Registration';
 
 const BalancePage = lazy(() => import('pages' /* webpackChunkName: "BalancePage" */));
@@ -13,7 +12,7 @@ const NotFound = lazy(() =>
 function App() {
   return (
     <main>
-      <NavBar />
+      <AppBar />
       <Routes>
         <Route path="/" element={<Registration />} />
 

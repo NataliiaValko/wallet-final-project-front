@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
-import UserMenu from 'components/userMenu/userMenu';
-import style from '../NavBar/NavBar.module.scss';
+import UserMenu from 'components/userMenu/UserMenu';
+import style from './AppBar.module.scss';
 
-export const NavBar = () => {
+const AppBar = () => {
   let location = useLocation();
 
   return (
     <>
       <header className={style.header}>
-        <Link className={style.headerTitle} to="/balance">
+        <Link className={style.header__title} to="/balance">
           Kapusta
         </Link>
 
@@ -18,3 +18,5 @@ export const NavBar = () => {
     </>
   );
 };
+
+export default AppBar;

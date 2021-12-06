@@ -42,19 +42,19 @@ function CustomButton(props) {
   return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
 }
 
-const BalanceFormButtons = ({ name, type, onclick }) => {
+const BalanceFormButtons = ({ name, type, onClick }) => {
   return (
     <Stack spacing={2} direction="row">
       <CustomButton type={type[0]}>{name[0]}</CustomButton>
-      <CustomButton onClick={onclick} type={type[1]}>
+      <CustomButton onClick={onClick} type={type[1]}>
         {name[1]}
       </CustomButton>
     </Stack>
   );
 };
 
-export const Button = ({ name, type, onclick }) => (
-  <CustomButton onClick={onclick} type={type}>
+export const Button = ({ name, type, onClick }) => (
+  <CustomButton onClick={onClick} type={type}>
     {name}
   </CustomButton>
 );
@@ -62,13 +62,13 @@ export const Button = ({ name, type, onclick }) => (
 BalanceFormButtons.propTypes = {
   name: PropTypes.array.isRequired,
   type: PropTypes.array.isRequired,
-  onclick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Button.propTypes = {
-  name: PropTypes.array.isRequired,
-  type: PropTypes.array.isRequired,
-  onclick: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default BalanceFormButtons;
