@@ -6,6 +6,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import BalanceTable from 'components/BalanceTable/BalanceTable';
 import Form from 'components/BalanceTable/Form';
+import AddCategory from 'components/BalanceTable/AddCategory';
 import style from './BalanceTable.module.scss';
 
 const IncomData = [
@@ -39,6 +40,34 @@ const expensesData = [
     description: 'мясо',
     category: 'Продукты',
     sum: -200,
+  },
+  {
+    id: 203,
+    date: '22.01.2021',
+    description: 'курица',
+    category: 'Продукты',
+    sum: -200,
+  },
+  {
+    id: 204,
+    date: '22.01.2021',
+    description: 'олия',
+    category: 'Продукты',
+    sum: -64,
+  },
+  {
+    id: 205,
+    date: '22.01.2021',
+    description: 'овощи',
+    category: 'Продукты',
+    sum: -200,
+  },
+  {
+    id: 206,
+    date: '22.01.2021',
+    description: 'вода',
+    category: 'Продукты',
+    sum: -100,
   },
 ];
 
@@ -95,13 +124,16 @@ const HeaderTabs = () => {
             categoryArray={ExpensesCatagoryArray}
           />
           <BalanceTable data={expensesData} reportData={ExpensesReportData} />
+          <AddCategory categoryArray={ExpensesCatagoryArray} />
         </TabPanel>
+
         <TabPanel value="2">
           <Form
             placeholder={['Описание дохода', 'Категория дохода']}
             categoryArray={incomeCatagoryArray}
           />
           <BalanceTable data={IncomData} reportData={IncomReportData} />
+          <AddCategory categoryArray={incomeCatagoryArray} />
         </TabPanel>
       </TabContext>
     </Box>
