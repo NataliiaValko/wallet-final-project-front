@@ -13,6 +13,9 @@ export const NavBar = () => {
 
           <ul className={style.list}>
             <li className={style.links}>
+              <CustomLink to="/register">Registration</CustomLink>
+            </li>
+            <li className={style.links}>
               <CustomLink to="/balance">Balance</CustomLink>
             </li>
           </ul>
