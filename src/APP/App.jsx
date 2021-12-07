@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
-
 import { Routes, Route } from 'react-router-dom';
-import { NavBar } from 'components/NavBar/NavBar';
+import AppBar from 'components/AppBar/AppBar';
 import Registration from 'pages/Registration';
 import StatisticWrapper from 'components/Statistic/StatisticWrapper';
 
@@ -14,36 +13,34 @@ const NotFound = lazy(() =>
 function App() {
   return (
     <main>
+      <AppBar />
       <Routes>
-        <Route path="/" element={<NavBar />}>
-          <Route path="register" element={<Registration />} />
+        <Route path="/" element={<Registration />} />
 
-          <Route
-            path="balance"
-            element={
-              <Suspense fallback={<h1>Loading...</h1>}>
-                <BalancePage />
-              </Suspense>
-            }
-          />
-
-          <Route
-            path="*"
-            element={
-              <Suspense fallback={<h1>Loading...</h1>}>
-                <NotFound />
-              </Suspense>
-            }
-          />
-          <Route
-            path="reports"
-            element={
-              <Suspense fallback={<h1>Loading...</h1>}>
-                <StatisticWrapper />
-              </Suspense>
-            }
-          />
-        </Route>
+        <Route
+          path="balance"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <BalancePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <NotFound />
+            </Suspense>
+          }
+        />
+        <Route
+          path="reports"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <StatisticWrapper />
+            </Suspense>
+          }
+        />
       </Routes>
     </main>
   );
