@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
-
 import { Routes, Route } from 'react-router-dom';
-import { NavBar } from 'components/NavBar/NavBar';
+import AppBar from 'components/AppBar/AppBar';
 import Registration from 'pages/Registration';
 import Login from 'pages/Login';
 
@@ -14,29 +13,28 @@ const NotFound = lazy(() =>
 function App() {
   return (
     <main>
+      <AppBar />
       <Routes>
-        <Route path="/" element={<NavBar />}>
-          <Route path="register" element={<Registration />} />
-          <Route path="login" element={<Login />} />
+        <Route path="/" element={<Registration />} />
+        <Route path="login" element={<Login />} />
 
-          <Route
-            path="balance"
-            element={
-              <Suspense fallback={<h1>Loading...</h1>}>
-                <BalancePage />
-              </Suspense>
-            }
-          />
+        <Route
+          path="balance"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <BalancePage />
+            </Suspense>
+          }
+        />
 
-          <Route
-            path="*"
-            element={
-              <Suspense fallback={<h1>Loading...</h1>}>
-                <NotFound />
-              </Suspense>
-            }
-          />
-        </Route>
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <NotFound />
+            </Suspense>
+          }
+        />
       </Routes>
     </main>
   );

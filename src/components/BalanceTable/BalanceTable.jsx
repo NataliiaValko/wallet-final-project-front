@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { DataGrid, GridToolbarContainer, GridToolbarExport, gridClasses } from '@mui/x-data-grid';
 import ReportTable from 'components/BalanceTable/ReportTable';
+import style from './BalanceTable.module.scss';
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
@@ -100,13 +101,8 @@ const BalanceTable = ({ data, reportData }) => {
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <div
-        style={{
-          height: 400,
-          width: '65%',
-        }}
-      >
+    <div className={style.tables__thumb}>
+      <div className={style.balancetable__thumb}>
         <DataGrid
           onCellEditCommit={show}
           rows={rows}
