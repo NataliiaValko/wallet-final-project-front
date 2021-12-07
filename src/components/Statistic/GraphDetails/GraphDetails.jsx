@@ -6,7 +6,7 @@ import Categories from './Categories';
 import { useState } from 'react';
 
 drilldown(Highcharts);
-
+//comment
 //РАСХОДЫ - ТЕСТ
 const optionsCosts = {
   chart: {
