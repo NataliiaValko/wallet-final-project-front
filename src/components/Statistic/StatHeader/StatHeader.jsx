@@ -1,7 +1,7 @@
-import s from './StatHeader.module.css';
 import BackButton from './BackButton';
 import Balance from './Balance';
 import Period from './Period';
+import s from './StatHeader.module.css';
 
 const StatHeader = () => {
   return (

@@ -1,9 +1,10 @@
-import s from './GraphDetails.module.css';
+import { useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import drilldown from 'highcharts/modules/drilldown';
 import Categories from './Categories';
-import { useState } from 'react';
+
+import s from './GraphDetails.module.css';
 
 drilldown(Highcharts);
 //comment

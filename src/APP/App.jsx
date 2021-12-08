@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from 'components/AppBar/AppBar';
 import Registration from 'pages/Registration';
-import StatisticWrapper from 'components/Statistic/StatisticWrapper';
+import StatisticPage from 'pages/StatisticPage';
 import ProfilePage from 'pages/ProfilePage';
 import Login from 'pages/Login';
 
@@ -49,7 +49,7 @@ function App() {
           path="reports"
           element={
             <Suspense fallback={<h1>Loading...</h1>}>
-              <StatisticWrapper />
+              <StatisticPage />
             </Suspense>
           }
         />
