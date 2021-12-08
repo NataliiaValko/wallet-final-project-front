@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from 'components/AppBar/AppBar';
 import Registration from 'pages/Registration';
+import ProfilePage from 'pages/ProfilePage';
 
 const BalancePage = lazy(() => import('pages' /* webpackChunkName: "BalancePage" */));
 
@@ -21,6 +22,15 @@ function App() {
           element={
             <Suspense fallback={<h1>Loading...</h1>}>
               <BalancePage />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="profile"
+          element={
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <ProfilePage />
             </Suspense>
           }
         />
