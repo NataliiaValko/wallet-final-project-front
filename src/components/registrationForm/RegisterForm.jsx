@@ -6,8 +6,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { userSchema } from '../../validationSchemas/userSchema';
+import { userSchema } from 'validationSchemas/userSchema';
 import { makeStyles } from '@mui/styles';
+import { useCreateUserMutation } from 'redux/service/userAPI';
 // CUSTOM HOOKS
 
 // import Input from '../FormComponents/Input';
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
 });
 
 const RegisterForm = () => {
+  const [createUser] = useCreateUserMutation();
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
@@ -34,6 +36,7 @@ const RegisterForm = () => {
     },
     validationSchema: userSchema,
     onSubmit: values => {
+      createUser(values);
       alert(JSON.stringify(values, null, 2));
     },
   });
