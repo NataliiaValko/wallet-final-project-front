@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const RegisterForm = () => {
+const RegistrationForm = () => {
   const [createUser] = useCreateUserMutation();
   const classes = useStyles();
   const formik = useFormik({
@@ -132,7 +132,7 @@ const RegisterForm = () => {
   );
 };
 
-// const RegisterForm = () => {
+// const RegistrationForm = () => {
 //   return (
 //     <Formik
 //       initialValues={{
@@ -210,4 +210,4 @@ const RegisterForm = () => {
 //   );
 // };
 
-export default RegisterForm;
+export default RegistrationForm;
