@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import AppBar from 'components/AppBar/AppBar';
 import Registration from 'pages/Registration';
 import ProfilePage from 'pages/ProfilePage';
+import Login from 'pages/Login';
 
 const BalancePage = lazy(() => import('pages' /* webpackChunkName: "BalancePage" */));
 
@@ -16,6 +17,7 @@ function App() {
       <AppBar />
       <Routes>
         <Route path="/" element={<Registration />} />
+        <Route path="login" element={<Login />} />
 
         <Route
           path="balance"
