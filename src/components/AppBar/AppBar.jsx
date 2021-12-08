@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
-import UserMenu from 'components/userMenu/UserMenu';
+import UserMenu from '../../components/userMenu/userMenu';
 import style from './AppBar.module.scss';
 
 const AppBar = () => {
