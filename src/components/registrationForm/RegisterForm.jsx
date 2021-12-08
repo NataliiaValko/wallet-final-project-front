@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import userSchema from '../../validationSchemas/userSchema';
+import { userSchema } from '../../validationSchemas/userSchema';
 import { makeStyles } from '@mui/styles';
 import { useCreateUserMutation } from '../../redux/service/auth/registration';
 // CUSTOM HOOKS
