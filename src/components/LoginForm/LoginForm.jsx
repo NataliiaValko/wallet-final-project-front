@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import loginSchema from '../../validationSchemas/login';
+import loginSchema from 'validationSchemas/login';
 // CUSTOM HOOKS
 
 // import Input from '../FormComponents/Input';
