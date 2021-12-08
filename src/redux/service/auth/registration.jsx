@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const newUser = createApi({
-  reducerPath: 'newUser',
+export const user = createApi({
+  reducerPath: 'user',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://adamants-wallet-project-back.herokuapp.com/api/users/',
   }),
-  tagTypes: ['newUser'],
+  tagTypes: ['user'],
   endpoints: builder => ({
-    createNewUser: builder.mutation({
+    createUser: builder.mutation({
       query: ({ email, password }) => ({
         url: `/registration`,
         method: 'POST',
@@ -20,4 +20,4 @@ export const newUser = createApi({
   }),
 });
 
-export const { useCreateNewUserMutation } = newUser;
+export const { useCreateUserMutation } = user;

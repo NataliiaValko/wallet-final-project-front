@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import userSchema from '../../validationSchemas/userSchema';
 import { makeStyles } from '@mui/styles';
-import { useCreateNewUserMutation } from '../../redux/service/auth/registration';
+import { useCreateUserMutation } from '../../redux/service/auth/registration';
 // CUSTOM HOOKS
 
 // import Input from '../FormComponents/Input';
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 });
 
 const RegisterForm = () => {
-  const [createUser] = useCreateNewUserMutation();
+  const [createUser] = useCreateUserMutation();
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
