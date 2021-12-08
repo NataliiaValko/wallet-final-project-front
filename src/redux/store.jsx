@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { exchangeRates } from './service/exchangeAPI/exchangeAPI';
-import { newUser } from './service/auth/registration';
+import { user } from './service/auth/authentication';
 const store = configureStore({
   reducer: {
     [exchangeRates.reducerPath]: exchangeRates.reducer,
-    [newUser.reducerPath]: newUser.reducer,
+    [user.reducerPath]: user.reducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware(),
-    newUser.middleware,
+    user.middleware,
     exchangeRates.middleware,
   ],
 });
