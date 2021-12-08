@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { userSchema } from 'validationSchemas/userSchema';
 import { makeStyles } from '@mui/styles';
-import { useCreateUserMutation } from 'redux/service/auth/authentication';
+import { useCreateUserMutation } from 'redux/service/userAPI';
 // CUSTOM HOOKS
 
 // import Input from '../FormComponents/Input';

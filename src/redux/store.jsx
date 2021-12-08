@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { exchangeRates } from './service/exchangeAPI/exchangeAPI';
-import { user } from './service/auth/authentication';
+import { user } from './service/userAPI';
 const store = configureStore({
   reducer: {
     [exchangeRates.reducerPath]: exchangeRates.reducer,
