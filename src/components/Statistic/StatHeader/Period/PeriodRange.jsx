@@ -8,6 +8,14 @@ import Box from '@mui/material/Box';
 
 const PeriodRange = () => {
   const [value, setValue] = useState([null, null]);
+
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  let yyyy = today.getFullYear();
+
+  today = yyyy + '-' + mm + '-' + dd;
+
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -15,6 +23,8 @@ const PeriodRange = () => {
           <DateRangePicker
             startText="Период С"
             endText="Период ПО"
+            // minDate={new Date('2021-03-01')}
+            maxDate={new Date(today)}
             value={value}
             onChange={newValue => {
               setValue(newValue);
