@@ -8,6 +8,7 @@ import s from './GraphDetails.module.css';
 
 drilldown(Highcharts);
 //comment
+//comment test
 //РАСХОДЫ - ТЕСТ
 const optionsCosts = {
   chart: {
