@@ -1,4 +1,7 @@
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MenuItem from '@mui/material/MenuItem';
 import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
@@ -11,6 +14,9 @@ import Container from 'components/Container';
 import style from './ProfilePage.module.scss';
 
 const ProfilePage = () => {
+  const location = useLocation();
+  const [locationFrom, setLocationFrom] = useState(location?.state?.from ?? '/');
+
   const user = {
     email: 'john.doe@gmail.com',
     fullName: {
@@ -67,7 +73,11 @@ const ProfilePage = () => {
         <Container>
           <div className={style.profile__wrapper}>
             <div className={style.profile__sidebar}>
-              <button className={style.profile__buttonBack}>Back</button>
+              {/* <button className={style.profile__buttonBack}>Back</button> */}
+              <Link className={style.button} type="button" to={locationFrom}>
+                <ArrowBackIcon />
+              </Link>
+
               <div className={style.avatar__wrapper}>
                 <IconAvatar src={avatar} width={300} height={300} />
                 <form
