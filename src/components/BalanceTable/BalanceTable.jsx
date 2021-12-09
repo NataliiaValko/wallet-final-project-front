@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import { useCallback, useState } from 'react';
 import { DataGrid, GridToolbarContainer, GridToolbarExport, gridClasses } from '@mui/x-data-grid';
 import ReportTable from 'components/BalanceTable/ReportTable';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import EditIcon from '@mui/icons-material/Edit';
+import balancePageColumns from 'utils/balancePageColumns';
 import InformationEditModal from 'components/Modal/InformationEditModal';
 import style from './BalanceTable.module.scss';
 
@@ -46,78 +44,12 @@ const BalanceTable = ({ data, reportData, category }) => {
     [rows],
   );
 
-  const columns = [
-    { field: 'id', hide: true, headerAlign: 'center' },
-    {
-      field: 'date',
-      headerName: 'Дата',
-      minWidth: 150,
-      type: 'date',
-      editable: true,
-      headerAlign: 'center',
-    },
-    {
-      field: 'description',
-      headerName: 'Описание',
-      minWidth: 200,
-      editable: true,
-      headerAlign: 'center',
-    },
-    {
-      field: 'category',
-      headerName: 'Категория',
-      minWidth: 150,
-      editable: true,
-      headerAlign: 'center',
-      type: 'singleSelect',
-      valueOptions: category,
-    },
-    {
-      field: 'sum',
-      headerName: 'Сумма',
-      minWidth: 150,
-      editable: true,
-      headerAlign: 'center',
-      type: 'number',
-    },
-    {
-      field: 'delete',
-      headerName: '',
-      minWidth: 50,
-      headerAlign: 'center',
-      renderCell: params => (
-        <strong>
-          <DeleteIcon
-            onClick={deleteTransAction(params.id)}
-            titleAccess="удалить"
-            className={style.button__delete}
-          />
-        </strong>
-      ),
-    },
-    {
-      field: 'actions',
-      type: 'actions',
-      width: 100,
-      getActions: params => [
-        <EditIcon
-          titleAccess="редактировать"
-          onClick={handleOpen}
-          className={style.button__edit}
-        />,
-        <SaveIcon
-          titleAccess="сохранит"
-          onClick={updateTransAction(params)}
-          className={style.button__save}
-        />,
-      ],
-    },
-  ];
-
   const infoMessageByEdit = () => {
     alert('Если вы внесли изминение, не забудьте сохранить их!');
     return;
   };
+
+  const columns = balancePageColumns(category, deleteTransAction, handleOpen, updateTransAction);
 
   return (
     <>
