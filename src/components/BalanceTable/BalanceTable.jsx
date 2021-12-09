@@ -59,7 +59,7 @@ const BalanceTable = ({ data, reportData, category }) => {
     {
       field: 'description',
       headerName: 'Описание',
-      minWidth: 150,
+      minWidth: 200,
       editable: true,
       headerAlign: 'center',
     },
@@ -81,21 +81,6 @@ const BalanceTable = ({ data, reportData, category }) => {
       type: 'number',
     },
     {
-      field: 'edit',
-      headerName: '',
-      minWidth: 50,
-      headerAlign: 'center',
-      renderCell: params => (
-        <strong>
-          <EditIcon
-            titleAccess="редактировать"
-            onClick={handleOpen}
-            className={style.button__edit}
-          />
-        </strong>
-      ),
-    },
-    {
       field: 'delete',
       headerName: '',
       minWidth: 50,
@@ -111,19 +96,21 @@ const BalanceTable = ({ data, reportData, category }) => {
       ),
     },
     {
-      field: 'save',
-      headerName: '',
-      minWidth: 50,
-      headerAlign: 'center',
-      renderCell: params => (
-        <strong>
-          <SaveIcon
-            titleAccess="сохранит"
-            onClick={updateTransAction(params)}
-            className={style.button__edit}
-          />
-        </strong>
-      ),
+      field: 'actions',
+      type: 'actions',
+      width: 100,
+      getActions: params => [
+        <EditIcon
+          titleAccess="редактировать"
+          onClick={handleOpen}
+          className={style.button__edit}
+        />,
+        <SaveIcon
+          titleAccess="сохранит"
+          onClick={updateTransAction(params)}
+          className={style.button__save}
+        />,
+      ],
     },
   ];
 
