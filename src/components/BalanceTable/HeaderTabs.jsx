@@ -123,7 +123,11 @@ const HeaderTabs = () => {
             placeholder={['Описание товара', 'Категория товара']}
             categoryArray={ExpensesCatagoryArray}
           />
-          <BalanceTable data={expensesData} reportData={ExpensesReportData} />
+          <BalanceTable
+            data={expensesData}
+            reportData={ExpensesReportData}
+            category={ExpensesCatagoryArray}
+          />
           <AddCategory categoryArray={ExpensesCatagoryArray} />
         </TabPanel>
 
@@ -132,7 +136,11 @@ const HeaderTabs = () => {
             placeholder={['Описание дохода', 'Категория дохода']}
             categoryArray={incomeCatagoryArray}
           />
-          <BalanceTable data={IncomData} reportData={IncomReportData} />
+          <BalanceTable
+            data={IncomData}
+            reportData={IncomReportData}
+            category={incomeCatagoryArray}
+          />
           <AddCategory categoryArray={incomeCatagoryArray} />
         </TabPanel>
       </TabContext>

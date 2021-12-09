@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
+import { useCallback, useState } from 'react';
 import { DataGrid, GridToolbarContainer, GridToolbarExport, gridClasses } from '@mui/x-data-grid';
 import ReportTable from 'components/BalanceTable/ReportTable';
-import style from './BalanceTable.module.scss';
-
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-// import SaveIcon from '@mui/icons-material/Save';
-// import CancelIcon from '@mui/icons-material/Close';
+import SaveIcon from '@mui/icons-material/Save';
+import EditIcon from '@mui/icons-material/Edit';
+import InformationEditModal from 'components/Modal/InformationEditModal';
+import style from './BalanceTable.module.scss';
 
 function CustomToolbar() {
   return (
@@ -16,19 +16,42 @@ function CustomToolbar() {
   );
 }
 
-const BalanceTable = ({ data, reportData }) => {
-  const handleDelete = () => console.info('You clicked the delete icon.');
+const BalanceTable = ({ data, reportData, category }) => {
+  const [rows, setRows] = useState(data);
+  const [open, setOpen] = useState(false);
 
-  const handleEdit = e => {
-    console.log('You clicked the edit icon.', e);
-  };
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const deleteTransAction = useCallback(
+    id => () => {
+      setTimeout(() => {
+        setRows(prevRows => prevRows.filter(row => row.id !== id));
+      });
+    },
+    [],
+  );
+
+  const updateTransAction = useCallback(
+    params => () => {
+      if (rows.find(row => row === params.row)) {
+        alert('Изменения не обнаружены, либо ещё не готовы к сохранению');
+        return;
+      }
+
+      setRows(prevRows => prevRows.map(row => (row.id === params.id ? { ...params.row } : row)));
+
+      alert('Изменения сохранены');
+    },
+    [rows],
+  );
 
   const columns = [
     { field: 'id', hide: true, headerAlign: 'center' },
     {
       field: 'date',
       headerName: 'Дата',
-      minWidth: 110,
+      minWidth: 150,
       type: 'date',
       editable: true,
       headerAlign: 'center',
@@ -36,95 +59,104 @@ const BalanceTable = ({ data, reportData }) => {
     {
       field: 'description',
       headerName: 'Описание',
-      minWidth: 200,
+      minWidth: 150,
       editable: true,
       headerAlign: 'center',
     },
     {
       field: 'category',
       headerName: 'Категория',
-      minWidth: 200,
+      minWidth: 150,
       editable: true,
       headerAlign: 'center',
+      type: 'singleSelect',
+      valueOptions: category,
     },
-    { field: 'sum', headerName: 'Сумма', minWidth: 100, editable: true, headerAlign: 'center' },
     {
-      field: 'delete',
-      headerName: '',
-      minWidth: 100,
+      field: 'sum',
+      headerName: 'Сумма',
+      minWidth: 150,
+      editable: true,
       headerAlign: 'center',
-      renderCell: params => (
-        <strong>
-          <DeleteIcon
-            onClick={handleDelete}
-            variant="contained"
-            color="primary"
-            size="small"
-            style={{ marginLeft: 16, cursor: 'pointer', color: '000' }}
-          >
-            delete
-          </DeleteIcon>
-        </strong>
-      ),
+      type: 'number',
     },
     {
       field: 'edit',
       headerName: '',
-      minWidth: 100,
+      minWidth: 50,
       headerAlign: 'center',
       renderCell: params => (
         <strong>
           <EditIcon
-            type="button"
-            onClick={handleEdit}
-            variant="contained"
-            size="small"
-            style={{ marginLeft: 16, cursor: 'pointer', color: '000' }}
-          >
-            edit
-          </EditIcon>
+            titleAccess="редактировать"
+            onClick={handleOpen}
+            className={style.button__edit}
+          />
+        </strong>
+      ),
+    },
+    {
+      field: 'delete',
+      headerName: '',
+      minWidth: 50,
+      headerAlign: 'center',
+      renderCell: params => (
+        <strong>
+          <DeleteIcon
+            onClick={deleteTransAction(params.id)}
+            titleAccess="удалить"
+            className={style.button__delete}
+          />
+        </strong>
+      ),
+    },
+    {
+      field: 'save',
+      headerName: '',
+      minWidth: 50,
+      headerAlign: 'center',
+      renderCell: params => (
+        <strong>
+          <SaveIcon
+            titleAccess="сохранит"
+            onClick={updateTransAction(params)}
+            className={style.button__edit}
+          />
         </strong>
       ),
     },
   ];
 
-  const rows = data;
-
-  // const click = () => {
-  //   console.log('onRowEditStart');
-  // };
-
-  const show = e => {
-    console.log('Я тут');
-    console.log(e.value);
-    console.log(e);
+  const infoMessageByEdit = () => {
+    alert('Если вы внесли изминение, не забудьте сохранить их!');
+    return;
   };
 
   return (
-    <div className={style.tables__thumb}>
-      <div className={style.balancetable__thumb}>
-        <DataGrid
-          onCellEditCommit={show}
-          rows={rows}
-          columns={columns}
-          // onCellEditStop={show}
-          // rowHeight={50}
-          // onRowClick={click}
-          // editMode="row"
-          // onRowEditStart={click}
-          components={{
-            Toolbar: CustomToolbar,
-          }}
-        />
+    <>
+      {open && <InformationEditModal open={open} handleClose={handleClose} />}
+      <div className={style.tables__thumb}>
+        <div className={style.balancetable__thumb}>
+          <DataGrid
+            onCellEditCommit={infoMessageByEdit}
+            rowsPerPageOptions={[5, 20, 100]}
+            rows={rows}
+            columns={columns}
+            components={{
+              Toolbar: CustomToolbar,
+            }}
+          />
+        </div>
+        <ReportTable data={reportData} />
       </div>
-      <ReportTable data={reportData} />
-    </div>
+    </>
   );
 };
 
 BalanceTable.propTypes = {
   data: PropTypes.array.isRequired,
   reportData: PropTypes.array.isRequired,
+  category: PropTypes.array.isRequired,
 };
 
 export default BalanceTable;
