@@ -1,40 +1,27 @@
 @import 'styles/shared.scss';
 
 .user__name {
-  // display: none;
   line-height: 14px;
   letter-spacing: 0.04em;
-
-  // @media screen and (min-width: $tablet) {
-  //   display: block;
-  // }
 }
 
 .user__button__logout {
-  display: none;
-  @media screen and (min-width: $tablet) {
-    display: block;
-    background-color: transparent;
-    padding: 0;
-    border: none;
-    color: inherit;
-    line-height: 14px;
-    letter-spacing: 0.04em;
-    text-decoration: underline;
-  }
+  display: block;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  color: inherit;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
 }
 
 .user__line {
-  display: none;
   &::before {
     content: '';
     display: block;
     width: 1px;
     height: 36px;
     background-color: #e0e5eb;
-  }
-
-  @media screen and (min-width: $tablet) {
-    display: block;
   }
 }
