@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import UserMenu from 'components/UserMenu';
 import style from './AppBar.module.scss';
@@ -9,9 +8,7 @@ const AppBar = () => {
   return (
     <>
       <header className={style.header}>
-        <Link className={style.header__title} to="/balance">
-          Kapusta
-        </Link>
+        <div className={style.logo}></div>
 
         {location.pathname === '/balance' && <UserMenu />}
       </header>
