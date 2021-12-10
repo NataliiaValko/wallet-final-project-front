@@ -25,10 +25,13 @@ const LoginForm = () => {
     onSubmit: values => {
       login(values)
         .unwrap()
-        .then(credentials => dispatch(setCredentials(credentials)))
+        .then(({ data }) => {
+          console.log(data);
+          dispatch(setCredentials(data));
+        })
         .catch(error => console.log(error.message));
 
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -66,12 +69,11 @@ const LoginForm = () => {
           disabled={!(formik.isValid && formik.dirty)}
           color="primary"
           variant="contained"
-          fullWidth
           type="submit"
         >
           Login
         </Button>
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <Button color="primary" variant="contained" type="submit">
           Go to Registration
         </Button>
       </form>
