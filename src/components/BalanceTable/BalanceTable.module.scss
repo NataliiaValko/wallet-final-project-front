@@ -78,5 +78,20 @@
 
 .balancetable__thumb {
   height: 400px;
-  width: 65%;
+  width: 70%;
+}
+
+.button__delete {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.button__edit,
+.button__save {
+  color: rgb(151, 148, 148);
+  cursor: pointer;
 }
