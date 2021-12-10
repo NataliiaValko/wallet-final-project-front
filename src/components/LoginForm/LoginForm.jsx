@@ -3,6 +3,9 @@ import Container from '@mui/material/Container';
 import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { useLoginMutation } from 'redux/service/userAPI';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from 'redux/service/authSlice';
 import loginSchema from 'validationSchemas/login';
 // CUSTOM HOOKS
 
@@ -10,6 +13,8 @@ import loginSchema from 'validationSchemas/login';
 // import CheckBox from 'components/FormComponents/CheckBox';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+  const [login] = useLoginMutation();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -18,7 +23,15 @@ const LoginForm = () => {
     validationSchema: loginSchema,
 
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      login(values)
+        .unwrap()
+        .then(({ data }) => {
+          console.log(data);
+          dispatch(setCredentials(data));
+        })
+        .catch(error => console.log(error.message));
+
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -56,12 +69,11 @@ const LoginForm = () => {
           disabled={!(formik.isValid && formik.dirty)}
           color="primary"
           variant="contained"
-          fullWidth
           type="submit"
         >
           Login
         </Button>
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <Button color="primary" variant="contained" type="submit">
           Go to Registration
         </Button>
       </form>
