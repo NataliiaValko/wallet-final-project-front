@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Media from 'react-media';
+import { useMediaPredicate } from 'react-media-hook';
 import SelectionModal from 'components/Modal/SelectionModal';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Stack from '@mui/material/Stack';
@@ -18,40 +18,32 @@ const UserMenu = () => {
 
   const goToHomePage = () => navigate('/');
 
+  const small = useMediaPredicate('(max-width: 767px)');
+  const medium = useMediaPredicate('(min-width: 768px) and (max-width: 1279px)');
+  const large = useMediaPredicate('(min-width: 1280px)');
+
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <IconAvatar src={avatarUrl} width={32} height={32} />
-      <Media
-        queries={{
-          small: '(max-width: 768px)',
-          medium: '(min-width: 769px) and (max-width: 1279px)',
-          large: '(min-width: 1280px)',
-        }}
-      >
-        {matches => (
-          <>
-            {matches.small && <LogoutIcon onClick={handleOpen} />}
-            {matches.medium && (
-              <>
-                <p className={style.user__name}>{fullName}</p>
-                <span className={style.user__line}></span>
-                <button className={style.user__button__logout} onClick={handleOpen}>
-                  Выйти
-                </button>
-              </>
-            )}
-            {matches.large && (
-              <>
-                <p className={style.user__name}>{fullName}</p>
-                <span className={style.user__line}></span>
-                <button className={style.user__button__logout} onClick={handleOpen}>
-                  Выйти
-                </button>
-              </>
-            )}
-          </>
-        )}
-      </Media>
+      {small && <LogoutIcon onClick={handleOpen} />}
+      {medium && (
+        <>
+          <p className={style.user__name}>{fullName}</p>
+          <span className={style.user__line}></span>
+          <button className={style.user__button__logout} onClick={handleOpen}>
+            Выйти
+          </button>
+        </>
+      )}
+      {large && (
+        <>
+          <p className={style.user__name}>{fullName}</p>
+          <span className={style.user__line}></span>
+          <button className={style.user__button__logout} onClick={handleOpen}>
+            Выйти
+          </button>
+        </>
+      )}
 
       {open && <SelectionModal open={open} handleClose={handleClose} onClick={goToHomePage} />}
     </Stack>

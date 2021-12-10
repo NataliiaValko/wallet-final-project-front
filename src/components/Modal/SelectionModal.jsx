@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import { Button } from 'components/Buttons/Buttons';
@@ -11,7 +12,7 @@ const modalRoot = document.querySelector('#modal-root');
 
 const SelectionModal = ({ open, handleClose, onClick }) => {
   return createPortal(
-    <Box>
+    <>
       <Modal
         keepMounted
         open={open}
@@ -21,16 +22,17 @@ const SelectionModal = ({ open, handleClose, onClick }) => {
       >
         <Box className={style.modal}>
           <CancelIcon className={style.modal__close_button} onClick={handleClose} />
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+          <Typography className={style.modal__title} id="keep-mounted-modal-title" mt={6} mb={2}>
             Вы уверены?
           </Typography>
-          <Box className={style.modal__button__thumb}>
+
+          <Stack direction="row" alignItems="center" spacing={2} justifyContent="center">
             <Button type="button" name="Да" onClick={onClick} />
             <Button type="button" name="Нет" onClick={handleClose} />
-          </Box>
+          </Stack>
         </Box>
       </Modal>
-    </Box>,
+    </>,
     modalRoot,
   );
 };
