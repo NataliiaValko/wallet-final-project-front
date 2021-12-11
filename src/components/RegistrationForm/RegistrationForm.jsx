@@ -1,14 +1,16 @@
 import React from 'react';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
+// import Container from '@mui/material/Container';
+// import Box from '@mui/material/Box';
 import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import Button from 'components/Buttons';
+// import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { userSchema } from 'validationSchemas/userSchema';
 import { makeStyles } from '@mui/styles';
 import { useCreateUserMutation } from 'redux/service/userAPI';
+import style from './registrationForm.module.scss';
 // CUSTOM HOOKS
 
 // import Input from '../FormComponents/Input';
@@ -38,110 +40,100 @@ const RegistrationForm = () => {
   });
 
   return (
-    <Container maxWidth="xs">
-      <Box
-        sx={{
-          width: 300,
-          height: 'auto',
-          padding: 2,
-          backgroundColor: 'rgb(240,240,240)',
-          borderRadius: '30px',
-        }}
-      >
-        <form autoComplete="off" onSubmit={formik.handleSubmit}>
-          <TextField
-            className={classes.root}
-            fullWidth
-            id="email"
-            name="email"
-            label="Email"
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
-            margin="normal"
-            required
-          />
+    <div className={style.box}>
+      <form autoComplete="off" onSubmit={formik.handleSubmit}>
+        <p className={style.registration__title}>
+          Вы можете авторизоваться с помощью Google Account:
+        </p>
+        <div className={style.button__wrapper}>
+          <Button name="Google" type="submit"></Button>
+        </div>
+        <p className={style.registration__title}>
+          Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+        </p>
+        <TextField
+          className={style.registration__input}
+          fullWidth
+          id="email"
+          name="email"
+          label="Электронная почта:"
+          value={formik.values.email}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+          margin="normal"
+          required
+        />
 
-          <TextField
-            fullWidth
-            id="password"
-            name="password"
-            label="Password"
-            type="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password && formik.errors.password}
-            margin="normal"
-            required
-          />
+        <TextField
+          fullWidth
+          id="password"
+          name="password"
+          label="Пароль"
+          type="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+          margin="normal"
+          required
+        />
 
-          <TextField
-            fullWidth
-            id="confirmPassword"
-            name="confirmPassword"
-            label="Confirm Password"
-            type="password"
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
-            margin="normal"
-          />
-          <TextField
-            fullWidth
-            id="firstName"
-            name="firstName"
-            label="First Name"
-            value={formik.values.firstName}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-            helperText={formik.touched.firstName && formik.errors.firstName}
-            margin="normal"
-          />
-          <TextField
-            fullWidth
-            id="lastName"
-            name="lastName"
-            label="Last Name"
-            value={formik.values.lastName}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-            helperText={formik.touched.lastName && formik.errors.lastName}
-            margin="normal"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                id="acceptedTerms"
-                name="acceptedTerms"
-                value={formik.values.acceptedTerms}
-                onChange={formik.handleChange}
-                error={formik.touched.acceptedTerms && Boolean(formik.errors.acceptedTerms)}
-              />
-            }
-            label="Accepted Terms"
-          ></FormControlLabel>
-          <Button
-            disabled={!(formik.isValid && formik.dirty)}
-            color="primary"
-            variant="contained"
-            type="submit"
-          >
-            Войти
-          </Button>
-          <Button color="primary" variant="contained" type="submit">
-            Регистрация
-          </Button>
-        </form>
-      </Box>
-    </Container>
+        <TextField
+          fullWidth
+          id="confirmPassword"
+          name="confirmPassword"
+          label="Подтвердите пароль"
+          type="password"
+          value={formik.values.confirmPassword}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+          helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+          margin="normal"
+        />
+        <TextField
+          fullWidth
+          id="firstName"
+          name="firstName"
+          label="Ваше Имя"
+          value={formik.values.firstName}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+          helperText={formik.touched.firstName && formik.errors.firstName}
+          margin="normal"
+        />
+        <TextField
+          fullWidth
+          id="lastName"
+          name="lastName"
+          label="Ваша фамилия"
+          value={formik.values.lastName}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+          helperText={formik.touched.lastName && formik.errors.lastName}
+          margin="normal"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              id="acceptedTerms"
+              name="acceptedTerms"
+              value={formik.values.acceptedTerms}
+              onChange={formik.handleChange}
+              error={formik.touched.acceptedTerms && Boolean(formik.errors.acceptedTerms)}
+            />
+          }
+          label="Пользовательское соглашения"
+        ></FormControlLabel>
+        <Button name="Войти" disabled={!(formik.isValid && formik.dirty)} type="submit"></Button>
+        <Button name="Регистрация" type="submit"></Button>
+      </form>
+    </div>
   );
 };
 
