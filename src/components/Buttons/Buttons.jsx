@@ -15,8 +15,8 @@ const BalanceFormButtons = ({ name, type, onClick }) => {
   );
 };
 
-export const Button = ({ name, type, onClick }) => (
-  <button className={style.main__button} onClick={onClick} type={type}>
+export const Button = ({ name, type, onClick, disabled }) => (
+  <button className={style.main__button} onClick={onClick} type={type} disabled={disabled}>
     {name}
   </button>
 );
@@ -31,6 +31,7 @@ Button.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default BalanceFormButtons;
