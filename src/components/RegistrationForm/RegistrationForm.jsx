@@ -1,9 +1,9 @@
 import React from 'react';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
+// import Container from '@mui/material/Container';
+// import Box from '@mui/material/Box';
 import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
-import { Button } from '../../components/Buttons/Buttons';
+import Button from 'components/Buttons';
 // import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';

@@ -35,6 +35,10 @@ export const user = createApi({
         },
       }),
     }),
+
+    logout: builder.mutation({
+      query: {},
+    }),
   }),
 });
 
